@@ -5,18 +5,17 @@ Returns: an integer
 # assume the is always *only one* odd int out
 
 def single_number(arr):
-    # get the original length
-    length = len(arr)
+    
     # loop thru array
     # for i in range(length):
     while len(arr) > 1:
-        # pop out a number
+        # pop out the last number
         oddity = arr.pop(-1)
         # check if that number is still in the array
         if oddity not in arr:
             # if not return it
             return oddity
-        # now removethe non-oddity, or else we'll get a false-positive
+        # now remove the non-oddity, or else we'll get a false-positive
         else:
             arr.remove(oddity)
 
