@@ -32,6 +32,7 @@ def eating_cookies(n):
         permutations = eating_cookies( \
             n-1) + eating_cookies(n-2) + eating_cookies(n-3)
         return permutations
+        
         # totes misunderstood this problem the first time
         # def not just a reworded factorial problem
         # factorial = 1
