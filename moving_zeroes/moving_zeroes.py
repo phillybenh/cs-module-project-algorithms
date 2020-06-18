@@ -6,11 +6,24 @@ Returns: a List of integers
 def moving_zeroes(arr):
     length = len(arr)
     count = 0
-    # remove ALL zeros AND append new ones on the end
-    while (arr.count(0) and count < length):
-        arr.remove(0)
+
+    for i in range(length):
+        if arr[i] != 0:
+
+            # here count is incremented
+            arr[count] = arr[i]
+            count += 1
+    
+    while count < length:
+        arr[count] = 0
         count += 1
-        arr.append(0)
+           
+    # remove ALL zeros AND append new ones on the end
+    ### Day 1 Implementation ###
+    # while (arr.count(0) and count < length):
+    #     arr.remove(0) # .remove() is O(n)
+    #     count += 1
+    #     arr.append(0)
     ## moved this up to the while loop
     # append zeros onto the end
     # for i in range(count):
@@ -21,7 +34,6 @@ def moving_zeroes(arr):
 
     """
     Don't do this, obvs
-    # this is a dirty solution
     # initialize array to track zero positions
     zed = []
     # loop thru arr
