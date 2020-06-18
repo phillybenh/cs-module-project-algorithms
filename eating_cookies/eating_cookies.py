@@ -2,6 +2,7 @@
 Input: an integer
 Returns: an integer
 '''
+# Runtime: O(3^n)
 def eating_cookies(n):
     # drawing out problem kinda looks like similar pattern to answer
     # to fibonacci problem from recursion video
@@ -40,10 +41,33 @@ def eating_cookies(n):
         #     factorial = factorial * i
         # return factorial
 
+# the cache allows us to save our work
+# cache is a dictionary where keys is the n, value is the answer
+# Runtime: O(n)
+def eating_cookies_cache(n, cache):
+    if n < 0:
+        return 0
+    elif n == 0:
+        return 1
+    # check if the answer is in our cache
+    elif cache[n] > 0:
+        return cache[n]
+    else:
+        # otherwise, our cache doesn't contain the answer, so we'll use our
+        # recursive logic to calculate it, and then save the answer in our
+        # cache for future uses
+        cache[n] = eating_cookies_cache(
+            n-3, cache) + eating_cookies_cache(n-2, cache) + eating_cookies_cache(n-1, cache)
+    return cache[n]
     
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
     num_cookies = 5
+    cache_cookies = 50
+    cache = {i: 0 for i in range(cache_cookies+1)}
+
 
     print(f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to each {num_cookies} cookies")
+    print(
+        f"There are {eating_cookies_cache(cache_cookies, cache)} ways for Cookie Monster to each {cache_cookies} cookies")

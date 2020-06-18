@@ -4,24 +4,29 @@ import sys
 
 def rock_paper_scissors(n):
   # init output array
-  out = [] 
+  out = []
+
   plays = ['rock', 'paper', 'scissors']
   
   # innner recursive function (READMe hinted at)
   def round(combo, round_number):
     # loop through the nubmer of rounds
     for i in range(3):
+      nonlocal out
       # add a play to this combination
       combo.append(plays[i])
       # if combination is n long, add it to output array
       if round_number == n:
         out.append(combo)
-  
       else:
         # increment this round
-        round_number += 1
         # recurse back through function
-        round(combo, round_number)
+        round(combo, round_number + 1)
+      
+      # pop off the last appended play
+      # b/c each iteration only get's one play?
+      # combo.pop(-1)
+
     
   
   # call recursive function
