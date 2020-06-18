@@ -15,12 +15,14 @@ def rock_paper_scissors(n):
       combo.append(plays[i])
       # if combination is n long, add it to output array
       if round_number == n:
-        return out.append(combo)
+        out.append(combo)
+  
       else:
         # increment this round
         round_number += 1
         # recurse back through function
         round(combo, round_number)
+    
   
   # call recursive function
   # initialize with [], so we can append to combo
@@ -36,5 +38,5 @@ if __name__ == "__main__":
   #   print(rock_paper_scissors(num_plays))
   # else:
   #   print('Usage: rps.py [num_plays]')
-  num_plays = 2
+  num_plays = 1
   print(rock_paper_scissors(num_plays))
